@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-console.log('Mongo DB =', process.env.MONGODB_URI);
+const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/plumpear';
+console.log('Mongo DB =', connectionString);
 
-const connectionString = process.env.MONGODB_URI;
 const configOptions = {
     useNewUrlParser: true,
     useCreateIndex: true,

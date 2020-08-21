@@ -1,5 +1,5 @@
 
-Plum & Pear Store is a e-commerce template that serves both the customers and the shop owner.  It provides product infomation, create account, login, and the ability to add porduct to favorite.  The owner has a dashboard to see highlevel information of the inventory and the sales/revenue numbers.  The owner would able to vew, create, update and delete inventory.
+Plum & Pear Store is a use case of useing an e-commerce template that serves both the customers and the shop owner.  It provides product infomation, create account, login, and the ability to add porduct to favorite.  The owner has a dashboard to see highlevel information of the inventory and the sales/revenue numbers.  The owner would able to vew, create, update and delete inventory.
 
 Technology: MongoDB, Express, React, Node.js, Google chart API, React Bootstrap, Paypal/Stripe API, Google sheet API
 
