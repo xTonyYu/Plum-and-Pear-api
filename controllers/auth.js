@@ -99,11 +99,18 @@ const verify = (req, res) => {
     console.log("Verify route Yo!")
     const token = req.headers['authorization']
 
-    return res.json({message: "verify Yo"});
-    // db.User.create(req.body, (err, newUser) => {
-    //     if (err) console.log('Error in controller - User register', err);
-    //     res.status(200).json(newUser)
-    // })
+    // verify token
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
+        if (err || !decodedUser) {
+            return res.status(401).json({
+                status: 401,
+                message: 'You are not authorized. Please login and try again'
+            });
+        }
+        // add paylod to req object
+        req.currentUser = decodedUser;
+        res.status(200).json({user: decodedUser});
+    })
 }
 
 
