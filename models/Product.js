@@ -32,7 +32,7 @@ const productSchema = new Schema({
         type: String,
     },
     liked: {
-        type: [String],
+        type: Number,
     },
     createdAt: {
         type: Date,
