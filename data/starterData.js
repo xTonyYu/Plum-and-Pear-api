@@ -1,8 +1,10 @@
+const bcrypt = require('bcryptjs')
+
 const userData = [
     {
         userName: "AdminX",
         email: "x@gmail.com",
-        password: '1qaz',
+        password: '$2a$10$WHAOrDFlUH5fwdxW6D9s6eqnNZe3Bb/yYWoS1qG1K75d7kuaYYtuK',
         firstName: "Tony",
         lastName: "Yu",
         streetAddress: "123 A St. #123",
@@ -13,7 +15,7 @@ const userData = [
     {
         userName: "customer",
         email: "y@gmail.com",
-        password: "1234",
+        password: "$2a$10$zF8hKRPc.N.3IkOrabuUZOV63goeJYd1h7ZL/0zNxWUGPTaa7CG/m",
         firstName: "Tony",
         lastName: "Yu",
         streetAddress: "123 A St. #123",
