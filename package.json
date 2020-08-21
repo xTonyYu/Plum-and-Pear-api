@@ -1,0 +1,31 @@
+{
+  "name": "plum-and-pear-api",
+  "version": "1.0.0",
+  "description": "Plum and Pear API built with Node/Express and MongoDB",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xTonyYu/Plum-and-Pear-api.git"
+  },
+  "author": "Tony Yu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xTonyYu/Plum-and-Pear-api/issues"
+  },
+  "homepage": "https://github.com/xTonyYu/Plum-and-Pear-api#readme"
+}
