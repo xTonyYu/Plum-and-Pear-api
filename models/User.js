@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Product = require('./Product')
 
 const userSchema = new mongoose.Schema ({
     userName: {
@@ -26,7 +27,7 @@ const userSchema = new mongoose.Schema ({
     },
     streetAddress: {type: String},
     city: {type: String},
-    state: {type: String},
+    state: {type: String, maxlenth: 2},
     zipCode: {type: String},
     shop: {
         type: String,
@@ -36,6 +37,10 @@ const userSchema = new mongoose.Schema ({
         type: Date,
         default: Date.now,
     },
+    productAddedBy: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Product',
+    }],
 }, {timestamps: true});
 
 const User = mongoose.model('User', userSchema);
