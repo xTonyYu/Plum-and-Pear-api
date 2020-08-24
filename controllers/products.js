@@ -7,6 +7,16 @@ const getAll = (req, res) => {
     })
 };
 
+const getByProdType = (req, res) => {
+    db.Product.find({prodType: req.params.prodtype}, (err, foundProdType) => {
+        if (err) console.log('Error in controller - Product getDetail', err);
+        if (!foundProdType) {
+            res.status(400).json({message: `Could not find product with id ${req.params.id}`});
+        }
+        res.status(200).json(foundProdType);
+    })
+};
+
 const getDetail = (req, res) => {
     db.Product.findById(req.params.id, (err, foundProd) => {
         if (err) console.log('Error in controller - Product getDetail', err);
@@ -43,6 +53,7 @@ const remove = (req, res) => {
 
 module.exports = {
     getAll,
+    getByProdType,
     getDetail,
     add,
     edit,

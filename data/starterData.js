@@ -50,6 +50,14 @@ const productData = [
         quantity: 3,
         imgUrl: 'https://elcoda.com/images/super/hofner-electric-violin-as-160e-v-1.jpg',
     },
+    {
+        name: 'NEW Electric Violin',
+        price: 200,
+        cost: 50,
+        prodType: 'Violin',
+        quantity: 10,
+        imgUrl: 'https://elcoda.com/images/super/hofner-electric-violin-as-160e-v-1.jpg',
+    },
 ]
 
 module.exports = {userData, productData}

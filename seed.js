@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const db = require('./models')
 const starter = require('./data/starterData')
 
@@ -23,9 +24,11 @@ db.Product.deleteMany({}, (err, deletedData) => {
                     admin.productAddedBy.push(product);
                     admin.save((err, updatedAdmin) => {
                         console.log('PRODUCT:', product.name, 'LINKED TO ', admin.userName)
+                        mongoose.connection.close()
                     })
                 })
             })
         })
     })
 })
+
