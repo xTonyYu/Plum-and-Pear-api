@@ -10,7 +10,7 @@ const userData = [
         streetAddress: "123 A St. #123",
         city: "San Mateo",
         state: "CA",
-        zipCode: "01234",
+        zipCode: "94401",
     },
     {
         userName: "customer",
@@ -18,16 +18,16 @@ const userData = [
         password: "$2a$10$zF8hKRPc.N.3IkOrabuUZOV63goeJYd1h7ZL/0zNxWUGPTaa7CG/m",
         firstName: "Tony",
         lastName: "Yu",
-        streetAddress: "123 A St. #123",
-        city: "San Mateo",
-        state: "CA",
-        zipCode: "01234",
+        streetAddress: "123 West 58th St. #1011",
+        city: "New York",
+        state: "NY",
+        zipCode: "10019",
     },
 ]
 
 const productData = [
     {
-        prodType: "painting",
+        prodType: "Painting",
         quantity: 5,
         name: "palm tree pastel 2016",
         price: 29.99,
@@ -35,7 +35,7 @@ const productData = [
         imgUrl: "/images/palmtree.jpeg",
     },
     {
-        prodType: "painting",
+        prodType: "Painting",
         quantity: 10,
         name: "New thing",
         price: 15,
@@ -46,7 +46,7 @@ const productData = [
         name: 'Hofner Electric Violin AS-160E-V',
         price: 595,
         cost: 150,
-        prodType: 'violin',
+        prodType: 'Violin',
         quantity: 3,
         imgUrl: 'https://elcoda.com/images/super/hofner-electric-violin-as-160e-v-1.jpg',
     },

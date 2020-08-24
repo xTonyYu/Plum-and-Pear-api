@@ -7,6 +7,11 @@ const routes = require('./routes');
 const port = process.env.PORT;
 const app = express();
 
+app.use(cors({
+    methods: "GET,POST,PUT,DELETE",
+    optionsSuccessStatus: 200
+}));
+
 // middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
