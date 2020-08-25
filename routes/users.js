@@ -6,6 +6,6 @@ router.get('/:id', ctrlr.users.getDetail);
 router.post('/', ctrlr.users.add)
 router.put('/:id', ctrlr.users.edit)
 router.delete('/:id', ctrlr.users.remove)
-router.put('/favorite/:userid/:prodid', ctrlr.users.addFav)
+router.put('/fav/:id/:direction', ctrlr.users.toggleFav)
 
 module.exports = router;

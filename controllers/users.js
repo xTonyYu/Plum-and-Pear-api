@@ -41,14 +41,17 @@ const remove = (req, res) => {
     })
 };
 
-const addFav = (reg, res) => {
-    db.Product.findByIdAndUpdate(req.params.prodid, { $inc: {'liked': 1}}, (err, updatedProduct) => {
-        if (err) console.log('Error in controller - User favorite - liked Product...', err);
-        db.User.findByIdAndUpdate(req.params.userid, updatedProduct, (err, updatedUser) => {
-            if (err) console.log('Error in controller - User add favorite...', err);
-            res.status()
+const toggleFav = (req, res) => {
+    db.User.findById(req.params.id, (err, foundUser) => {
+        if (err) console.log('Error in controller - User add favorite...', err);
+        if (req.params.direction === 'add') {
+            foundUser.favorite.push(req.body)
+        } else if (req.params.direction === 'remove') {
+            foundUser.favorite.remove(req.body)
+        }
+        foundUser.save((err, savedUser) => {
+            res.status(200).json(savedUser)
         })
-        
     })
 }
 
@@ -58,5 +61,5 @@ module.exports = {
     add,
     edit,
     remove,
-    addFav,
+    toggleFav,
 }
