@@ -28,7 +28,7 @@ const productSchema = new Schema({
     descrption: {
         type: String,
     },
-    imgUrl: {
+    image: {
         type: String,
     },
     liked: {

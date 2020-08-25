@@ -32,7 +32,7 @@ const productData = [
         name: "palm tree pastel 2016",
         price: 29.99,
         cost: 10,
-        imgUrl: "/images/palmtree.jpeg",
+        image: "/images/palmtree.jpeg",
     },
     {
         prodType: "Painting",
@@ -40,7 +40,7 @@ const productData = [
         name: "New thing",
         price: 15,
         cost: 2.5,
-        imgUrl: "/images/palmtree.jpeg",
+        image: "/images/palmtree.jpeg",
     },
     {
         name: 'Hofner Electric Violin AS-160E-V',
@@ -48,7 +48,7 @@ const productData = [
         cost: 150,
         prodType: 'Violin',
         quantity: 3,
-        imgUrl: 'https://elcoda.com/images/super/hofner-electric-violin-as-160e-v-1.jpg',
+        image: 'https://elcoda.com/images/super/hofner-electric-violin-as-160e-v-1.jpg',
     },
     {
         name: 'NEW Electric Violin',
@@ -56,7 +56,7 @@ const productData = [
         cost: 50,
         prodType: 'Violin',
         quantity: 10,
-        imgUrl: 'https://elcoda.com/images/super/hofner-electric-violin-as-160e-v-1.jpg',
+        image: 'https://elcoda.com/images/super/hofner-electric-violin-as-160e-v-1.jpg',
     },
 ]
 
