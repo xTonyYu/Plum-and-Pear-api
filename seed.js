@@ -21,10 +21,15 @@ db.Product.deleteMany({}, (err, deletedData) => {
                 const admin = allUsers.find(({userName}) => userName === 'AdminX')
                 // linking all products to the admin user
                 allProducts.forEach(product => {
-                    admin.productAddedBy.push(product);
+                    admin.productAddedBy.push(product); // all products created by AdminX
+                    admin.favorite.push(product); // Admin has all products has favorite
+                    db.Product.findByIdAndUpdate(product._id, { $inc: {'liked': 1}}, (err, updatedProduct) => {
+                        console.log(updatedProduct)
+                    })  // increase like for the product for each favorite added
                     admin.save((err, updatedAdmin) => {
+                        // if (err) console.log("err in saving...", err)
                         console.log('PRODUCT:', product.name, 'LINKED TO ', admin.userName)
-                        mongoose.connection.close()
+                        // mongoose.connection.close()
                     })
                 })
             })

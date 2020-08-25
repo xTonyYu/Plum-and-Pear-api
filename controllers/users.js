@@ -20,7 +20,7 @@ const getDetail = (req, res) => {
 const add = (req, res) => {
     db.User.create(req.body, (err, savedUser) => {
         if (err) console.log('Error in controller - User add', err);
-        res.status(200).json(savedUser);
+        res.status(201).json(savedUser);
     })
 };
 
@@ -30,7 +30,7 @@ const edit = (req, res) => {
         if (!updatedUser) {
             res.status(400).json({message: `Could not find User with id ${req.params.id}`});
         }
-        res.json(updatedUser);
+        res.status(200).json(updatedUser);
     })
 };
 
@@ -41,10 +41,22 @@ const remove = (req, res) => {
     })
 };
 
+const addFav = (reg, res) => {
+    db.Product.findByIdAndUpdate(req.params.prodid, { $inc: {'liked': 1}}, (err, updatedProduct) => {
+        if (err) console.log('Error in controller - User favorite - liked Product...', err);
+        db.User.findByIdAndUpdate(req.params.userid, updatedProduct, (err, updatedUser) => {
+            if (err) console.log('Error in controller - User add favorite...', err);
+            res.status()
+        })
+        
+    })
+}
+
 module.exports = {
     getAll,
     getDetail,
     add,
     edit,
     remove,
+    addFav,
 }

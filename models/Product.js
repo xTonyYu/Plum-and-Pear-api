@@ -2,15 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-    name: {
-        type: String,
-        unique: true,
-        required: [true, 'Prodcut name is required and must be different existing product name in the data'],
-    },
     prodType: {
         type: String,
         default: 'Core Product',
         required: [true, 'Prodcut type is required'],
+    },
+    quantity: {
+        type: Number,
+        default: 0,
+        required: true,
+    },
+    name: {
+        type: String,
+        unique: true,
+        required: [true, 'Prodcut name is required and must be different existing product name in the data'],
     },
     price: {
         type: Number,
@@ -20,12 +25,7 @@ const productSchema = new Schema({
         type: Number,
         required: [true, 'Cost is required'],
     },
-    quantity: {
-        type: Number,
-        default: 0,
-        required: true,
-    },
-    descrption: {
+    description: {
         type: String,
     },
     image: {
@@ -33,6 +33,7 @@ const productSchema = new Schema({
     },
     liked: {
         type: Number,
+        default: 0,
     },
     createdAt: {
         type: Date,
