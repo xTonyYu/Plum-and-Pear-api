@@ -19,6 +19,7 @@ app.use(express.json());
 // routes to products and users
 app.use('/api/v1/products', routes.products);
 app.use('/api/v1/users', routes.users);
+app.use('/api/v1/cartitems', routes.cartitems);
 app.use('/api/v1/auth', routes.auth);
 
 // connecting server

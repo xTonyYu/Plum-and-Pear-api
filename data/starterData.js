@@ -63,4 +63,9 @@ const productData = [
   },
 ];
 
-module.exports = { userData, productData };
+const cartData = [
+    {
+        prodName: 'starter',
+    }
+]
+module.exports = { userData, productData, cartData };

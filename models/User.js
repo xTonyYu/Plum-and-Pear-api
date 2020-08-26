@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require('./Product')
+const CartItem = require('./CartItem')
 
 const userSchema = new mongoose.Schema ({
     userName: {
@@ -44,6 +45,10 @@ const userSchema = new mongoose.Schema ({
     favorite: [{
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Product',
+    }],
+    cart: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'CartItem',
     }],
 }, {timestamps: true});
 

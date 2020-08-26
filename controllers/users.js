@@ -17,6 +17,22 @@ const getDetail = (req, res) => {
     })
 }
 
+const getDetailWithAttchment = (req, res) => {
+    // need to use poppulate({cart: })
+    db.User.findById(req.params.id)
+    .populate({ path: "favorite" })
+    .populate({ path: "cart" })
+    .exec((err, foundUser) => {
+        if (err) console.log('Error in controller - User getAll', err);
+        if (!foundUser) {
+            res.status(400).json({message: `Could not find user with id ${req.params.id}`});
+        }
+        console.log(foundUser)
+        res.status(200).json(foundUser)
+        }
+    )
+}
+
 const add = (req, res) => {
     db.User.create(req.body, (err, savedUser) => {
         if (err) console.log('Error in controller - User add', err);
@@ -58,6 +74,7 @@ const toggleFav = (req, res) => {
 module.exports = {
     getAll,
     getDetail,
+    getDetailWithAttchment,
     add,
     edit,
     remove,
