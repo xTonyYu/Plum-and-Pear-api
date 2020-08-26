@@ -17,4 +17,5 @@ mongoose.connect(connectionString, configOptions)
 module.exports = {
     Product: require('./Product'),
     User: require('./User'),
+    Cart: require('./Cart')
 }

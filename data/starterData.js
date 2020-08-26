@@ -29,7 +29,7 @@ const productData = [
   {
     prodType: "Painting",
     quantity: 5,
-    name: "palm tree pastel 2016",
+    name: "Palm Tree Pastel 2016",
     price: 29.99,
     cost: 10,
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque necessitatibus earum et at voluptatum. Blanditiis magni, ad reiciendis, totam ipsum vero ea dolores aliquid praesentium eum labore, illum voluptas cumque.",
