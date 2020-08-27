@@ -27,7 +27,6 @@ const getDetailWithAttchment = (req, res) => {
         if (!foundUser) {
             res.status(400).json({message: `Could not find user with id ${req.params.id}`});
         }
-        console.log(foundUser)
         res.status(200).json(foundUser)
         }
     )

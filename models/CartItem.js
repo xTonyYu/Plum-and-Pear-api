@@ -6,6 +6,10 @@ const cartSchema = new mongoose.Schema ({
         type: String, 
         required: [true, 'product name is required'],
     },
+    price: {
+        type: Number,
+        required: [true, 'Price is required'],
+    },
     prodImg: {
         type: String, 
         required: [true, 'Prod image is required'],
