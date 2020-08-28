@@ -14,6 +14,7 @@ app.use(cors({
     methods: "GET,POST,PUT,DELETE",
     optionsSuccessStatus: 200
 }));
+app.options('*', cors());
 
 // middleware
 app.use(express.urlencoded({extended: false}));
