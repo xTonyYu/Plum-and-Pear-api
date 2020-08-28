@@ -8,7 +8,9 @@ const getAll = (req, res) => {
 }
 
 const getDetail = (req, res) => {
-    db.User.findById(req.params.id, (err, foundUser) => {
+    db.User.findById(req.params.id)
+    .populate({ path: "cart" })
+    .exec((err, foundUser) => {
         if (err) console.log('Error in controller - User getAll', err);
         if (!foundUser) {
             res.status(400).json({message: `Could not find user with id ${req.params.id}`});
@@ -20,10 +22,9 @@ const getDetail = (req, res) => {
 const getDetailWithAttchment = (req, res) => {
     // need to use poppulate({cart: })
     db.User.findById(req.params.id)
-    .populate({ path: "favorite" })
     .populate({ path: "cart" })
     .exec((err, foundUser) => {
-        if (err) console.log('Error in controller - User getAll', err);
+        if (err) console.log('Error in controller - User getDetailWithAttchment', err);
         if (!foundUser) {
             res.status(400).json({message: `Could not find user with id ${req.params.id}`});
         }

@@ -30,7 +30,7 @@ const productSchema = new Schema({
     },
     image: {
         type: String,
-        default: '/images/babyVader.png',
+        default: "../../images/babyVader.png",
     },
     liked: {
         type: Number,

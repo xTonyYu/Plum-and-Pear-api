@@ -33,6 +33,9 @@ db.Product.deleteMany({}, (err, deletedData) => {
                         // mongoose.connection.close()
                     })
                 })
+                db.CartItem.deleteMany({}, (err, deleteCartItems) => {
+                    console.log('Delete CartItem collection - resetting')
+                })
             })
         })
     })
