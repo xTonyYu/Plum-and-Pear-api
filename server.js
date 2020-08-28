@@ -39,8 +39,7 @@ app.get("/", (req, res) => {
 });
 
 // const stripe = new Stripe(process.env.REACT_APP_API)
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const stripe = require('stripe')('sk_test_51HKd1qFxosFcUDRDuNAbVmbSHs1baXlkOTh553Butbx4Zje9lSbZe3n2NauRDHXy1bFk8PCEmo4jgYhicbniRnVe00irk1w5FW');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Ednpoint for when '/payment_intents' is called from client
 app.post('/api/v1/payment_intents', async (req, res) => {
