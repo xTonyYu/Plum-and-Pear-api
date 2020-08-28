@@ -10,7 +10,7 @@ const port = process.env.PORT;
 const app = express();
 
 app.use(cors({
-    origin: [`http://localhost:3000`, `https://plumpearstore.herokuapp.com`],
+    origin: '*',
     methods: "GET,POST,PUT,DELETE",
     optionsSuccessStatus: 200
 }));
