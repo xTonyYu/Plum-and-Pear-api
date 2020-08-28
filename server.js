@@ -9,9 +9,8 @@ const { resolve } = require("path");  // **** Stripe *****
 const port = process.env.PORT;
 const app = express();
 
-
-
 app.use(cors({
+    origin: true,
     methods: "GET,POST,PUT,DELETE",
     optionsSuccessStatus: 200
 }));
