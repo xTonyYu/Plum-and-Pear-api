@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectionString = process.env.MONGODB_LOCAL;
-// const connectionString = process.env.MONGODB_ATLAS || process.env.MONGODB_LOCAL;
+const connectionString = process.env.MONGODB_ATLAS;
 console.log('Mongo DB =', connectionString);
 
 const configOptions = {
