@@ -23,7 +23,7 @@ db.Product.deleteMany({}, (err, deletedData) => {
                 // linking all products to the admin user
                 allProducts.forEach(product => {
                     admin.productAddedBy.push(product); // all products created by AdminX
-                    admin.favorite.push(product); // Admin has all products has favorite
+                    admin.favorite.push(product); // Admin has all products as favorite
                     db.Product.findByIdAndUpdate(product._id, { $inc: {'liked': 1}}, (err, updatedProduct) => {
                         console.log(updatedProduct)
                     })  // increase like for the product for each favorite added
