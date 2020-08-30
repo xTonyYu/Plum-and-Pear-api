@@ -4,7 +4,6 @@ const ctrlr = require('../controllers');
 
 // routes
 router.get('/', ctrlr.products.getAll)
-router.get('/byprodtype/:prodtype', ctrlr.products.getByProdType)
 router.get('/:id', ctrlr.products.getDetail)
 router.post('/', ctrlr.products.add)
 router.put('/:id', ctrlr.products.edit)

@@ -1,25 +1,22 @@
 const express = require('express');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
-
+const { resolve } = require("path");  // **** Stripe *****
 require('dotenv').config();
 
-const routes = require('./routes');
-const { resolve } = require("path");  // **** Stripe *****
 const port = process.env.PORT;
+const routes = require('./routes');
 const app = express();
 
-
-
 app.use(cors({
-    methods: "GET,POST,PUT,DELETE",
+    origin: '*',
+    methods: 'GET,POST,PUT,DELETE',
     optionsSuccessStatus: 200
 }));
+app.options('*', cors());
 
 // middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
 
 
 // routes to products and users
@@ -27,7 +24,6 @@ app.use('/api/v1/products', routes.products);
 app.use('/api/v1/users', routes.users);
 app.use('/api/v1/cartitems', routes.cartitems);
 app.use('/api/v1/auth', routes.auth);
-
 
 
 // **** Stripe routes **********
@@ -38,7 +34,6 @@ app.get("/", (req, res) => {
     res.sendFile(path);
 });
 
-// const stripe = new Stripe(process.env.REACT_APP_API)
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Ednpoint for when '/payment_intents' is called from client
@@ -59,55 +54,6 @@ app.post('/api/v1/payment_intents', async (req, res) => {
         res.status(405).end("Method NOT Allowed")
     }
 })
-
-// **** Stripe routes NOT USING **********
-
-// Endpoint for when `/pay` is called from client
-app.post('/pay', async (request, response) => {
-    try {
-        // Create the PaymentIntent
-        let intent = await stripe.paymentIntents.create({
-            amount: 0.25,
-            currency: 'usd',
-            payment_method: request.body.payment_method_id,
-
-            // A PaymentIntent can be confirmed some time after creation,
-            // but here we want to confirm (collect payment) immediately.
-            confirm: true,
-
-            // If the payment requires any follow-up actions from the
-            // customer, like two-factor authentication, Stripe will error
-            // and you will need to prompt them for a new payment method.>
-            error_on_requires_action: true
-        });
-        console.log("2) Post try block")
-        return generateResponse(response, intent);
-    } catch (e) {
-        if (e.type === 'StripeCardError') {
-            // Display error on client
-            console.log("2) Post catch err block")
-            return response.send({ error: e.message });
-        } else {
-            // Something else happened
-            console.log("2) Post catch err block - somthing else")
-            return response.status(500).send({ error: e.type });
-        }
-        
-    }
-});
-
-function generateResponse(response, intent) {
-    if (intent.status === 'succeeded') {
-        // Handle post-payment fulfillment
-        console.log("3) response success block")
-        return response.send({ success: true });
-    } else {
-        // Any other status would be unexpected, so error
-        console.log("3) response block - something is wrong")
-        return response.status(500).send({error: 'Unexpected status ' + intent.status});
-    }
-}
-
 
 // connecting server
 app.listen(port, () => {

@@ -1,7 +1,10 @@
 const db = require('../models')
 
 const getAll = (req, res) => {
-    db.User.find({}, (err, allUsers) => {
+    db.User.find()
+    .populate({ path: "cart", model: db.CartItem, 
+        populate: { path: "product" } })
+    .exec((err, allUsers) => {
         if (err) console.log('Error in controller - User getAll', err);
         res.status(200).json(allUsers)
     })
@@ -9,7 +12,8 @@ const getAll = (req, res) => {
 
 const getDetail = (req, res) => {
     db.User.findById(req.params.id)
-    .populate({ path: "cart" })
+    .populate({ path: "cart", model: db.CartItem, 
+        populate: { path: "product" } })
     .exec((err, foundUser) => {
         if (err) console.log('Error in controller - User getAll', err);
         if (!foundUser) {
@@ -17,20 +21,6 @@ const getDetail = (req, res) => {
         }
         res.status(200).json(foundUser)
     })
-}
-
-const getDetailWithAttchment = (req, res) => {
-    // need to use poppulate({cart: })
-    db.User.findById(req.params.id)
-    .populate({ path: "cart" })
-    .exec((err, foundUser) => {
-        if (err) console.log('Error in controller - User getDetailWithAttchment', err);
-        if (!foundUser) {
-            res.status(400).json({message: `Could not find user with id ${req.params.id}`});
-        }
-        res.status(200).json(foundUser)
-        }
-    )
 }
 
 const add = (req, res) => {
@@ -41,7 +31,10 @@ const add = (req, res) => {
 };
 
 const edit = (req, res) => {
-    db.User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+    db.User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .populate({ path: "cart", model: db.CartItem, 
+        populate: { path: "product" } })
+    .exec((err, updatedUser) => {
         if (err) console.log('Error in controller - User edit', err);
         if (!updatedUser) {
             res.status(400).json({message: `Could not find User with id ${req.params.id}`});
@@ -57,26 +50,10 @@ const remove = (req, res) => {
     })
 };
 
-const toggleFav = (req, res) => {
-    db.User.findById(req.params.id, (err, foundUser) => {
-        if (err) console.log('Error in controller - User add favorite...', err);
-        if (req.params.direction === 'add') {
-            foundUser.favorite.push(req.body)
-        } else if (req.params.direction === 'remove') {
-            foundUser.favorite.remove(req.body)
-        }
-        foundUser.save((err, savedUser) => {
-            res.status(200).json(savedUser)
-        })
-    })
-}
-
 module.exports = {
     getAll,
     getDetail,
-    getDetailWithAttchment,
     add,
     edit,
     remove,
-    toggleFav,
 }

@@ -2,23 +2,23 @@ const mongoose = require('mongoose');
 const Product = require('./Product')
 
 const cartSchema = new mongoose.Schema ({
-    prodName: {
+    status: {
         type: String, 
-        required: [true, 'product name is required'],
+        required: [true, 'Status is required'],
+        default: 'in cart',  // 'in cart', 'bought'
     },
-    price: {
+    totPrice: {
         type: Number,
         required: [true, 'Price is required'],
     },
-    prodImg: {
-        type: String, 
-        required: [true, 'Prod image is required'],
-        default: '/images/babyVader.png'
+    totQty: {
+        type: Number, 
+        required: [true, 'Qty is required'],
+        default: 1,
     },
-    status: {
-        type: String, 
-        required: [true, 'First name is required'],
-        default: 'in cart',  // 'in cart', 'bought'
+    product: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Product',
     },
     createdAt: {
         type: Date,

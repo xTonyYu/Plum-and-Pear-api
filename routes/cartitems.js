@@ -4,8 +4,7 @@ const ctrlr = require('../controllers')
 router.get('/', ctrlr.cartitems.getAll);
 router.get('/:id', ctrlr.cartitems.getDetail);
 router.post('/', ctrlr.cartitems.add)
-router.put('/buy/:userid', ctrlr.cartitems.buy)
 router.put('/:id', ctrlr.cartitems.edit)
-router.delete('/:prod', ctrlr.cartitems.remove)
+router.delete('/:id', ctrlr.cartitems.remove)
 
 module.exports = router;
