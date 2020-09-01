@@ -47,7 +47,7 @@ This the Plum & Pear server API for the Plum & Pear Store. Plum & Pear Store is 
 
 ## Wireframe:
 
-![wireframe](./asset/Wireframe-PlumAndPearStore.png)
+![wireframe](./asset/Wireframe.png)
 
 ## ERD:
 
