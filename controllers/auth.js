@@ -58,7 +58,8 @@ const login = async (req, res) => {
     console.log("Login route Yo!")
     try {
         // check if user name exist
-        const foundUser = await db.User.findOne({userName: req.body.userName})
+        const foundUser = await db.User.findOne({userName: req.body.userName}).populate({ path: "cart", model: db.CartItem, 
+            populate: { path: "product" } })
         if (!foundUser) {
             return res.status(400).json({
                 status: 400,
